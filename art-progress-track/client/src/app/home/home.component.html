@@ -1,0 +1,13 @@
+<header>
+    <h1>Welcome!</h1>
+</header>
+<app-user-add-test></app-user-add-test>
+<app-auth-button></app-auth-button>
+<app-upload-image></app-upload-image>
+<ul *ngIf="auth.user$ | async as user">
+  dfgfdgd
+  <tr *ngFor="let account of Users$ | async as user">
+  <td>{{account.email}}</td>
+  <td>{{account.images}}</td>
+  </tr>
+</ul>

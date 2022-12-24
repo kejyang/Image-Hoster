@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "art-progress-tracker": {
+      "hosting": {
+        "client": [
+          "art-progress-tracker"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "art-progress-tracker"
+  }
+}
