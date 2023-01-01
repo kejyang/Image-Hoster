@@ -23,6 +23,8 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { ImagePageComponent } from './image-page/image-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 
@@ -34,6 +36,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     HomeComponent,
     UserAddTestComponent,
     UploadImageComponent,
+    ImagePageComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-7lul6xrih3fszlxk.us.auth0.com',
-      clientId: 'OMeGCm5PhBNc43hU2asu01G9oDEOO2gv'
+      clientId: 'OMeGCm5PhBNc43hU2asu01G9oDEOO2gv',
+      useRefreshTokens: true,
+      cacheLocation: 'localstorage',
     }),
     FormsModule,
     ReactiveFormsModule,
@@ -53,7 +59,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [HomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

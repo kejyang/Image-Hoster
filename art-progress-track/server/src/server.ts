@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
 import { userRouter } from "./user.routes";
+import { imageRouter } from "./image.routes";
 import { connectToDatabase } from "./database";
 import { auth } from "express-openid-connect";
  
@@ -34,6 +35,7 @@ connectToDatabase(ATLAS_URI)
         res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
       });*/
        app.use("/users", userRouter);
+       app.use("/images", imageRouter);
        // start the Express server
        app.listen(5200, () => {
            console.log(`Server running at http://localhost:5200...`);

@@ -8,21 +8,34 @@ import { User } from '../user';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: []
+  styles: [],
 })
 export class HomeComponent implements OnInit {
 
   Users$: Observable<User[]> = new Observable();
+  currUser : User = {
+    email: '',
+    images: [],
+  };
 
-  constructor(public auth: AuthService, private route: ActivatedRoute, private userService: UserService) {}
+  constructor(public auth: AuthService, private route: ActivatedRoute, private userService: UserService,) {}
 
   ngOnInit(): void {
     this.fetchUsers();
-
+    this.getCurrentUser();
   }
 
   private fetchUsers(): void {
     this.Users$ = this.userService.getUsers();
+    //console.log(this.Users$);
+  }
+
+  private getCurrentUser(): void{
+    this.auth.user$.subscribe(result=> {
+      this.userService.getUser(result?.name!).subscribe((user) => {
+        this.currUser = user;
+      });
+    }); 
   }
 
 }

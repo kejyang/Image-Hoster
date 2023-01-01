@@ -1,0 +1,11 @@
+<head>
+</head>
+<body>
+  <input type = "file" (change) = "onFileChange($event)">
+
+  <img [src]= url class = "resized" alt="Place image title" id = "preview">
+
+  <button (click)="onUpload()">
+    Upload Image
+  </button>
+</body>

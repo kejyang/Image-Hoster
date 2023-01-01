@@ -63,7 +63,7 @@ userRouter.get("/", async (_req, res) => {
     }
  });
 
- userRouter.put("/:id", async (req, res) => {
+/*  userRouter.put("/:id", async (req, res) => {
     try {
         const id = req?.params?.id;
         const user = req.body;
@@ -76,6 +76,29 @@ userRouter.get("/", async (_req, res) => {
             res.status(404).send(`Failed to find an user: ID ${id}`);
         } else {
             res.status(304).send(`Failed to update an user: ID ${id}`);
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(400).send(error.message);
+    }
+ }); */
+
+ userRouter.put("/:email", async (req, res) => {
+    try {
+        const _email = req?.params?.email;
+        const user = req.body;
+        const query = { email: _email };
+        const result = await collections.users.updateOne(query, { $set: {
+            email: req.body.email,
+            images: req.body.images,
+        } });
+  
+        if (result && result.matchedCount) {
+            res.status(200).send(`Updated an user: ID ${_email}.`);
+        } else if (!result.matchedCount) {
+            res.status(404).send(`Failed to find an user: ID ${_email}`);
+        } else {
+            res.status(304).send(`Failed to update an user: ID ${_email}`);
         }
     } catch (error) {
         console.error(error.message);
