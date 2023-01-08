@@ -3,9 +3,12 @@
 <body>
   <input type = "file" (change) = "onFileChange($event)">
 
-  <img [src]= url class = "resized" alt="Place image title" id = "preview">
-
+  <img [src]= url class = "resized" alt="Preview" id = "preview">
+  
+  <div><input type="text" alt="Description" [formControl]="description"></div>
+  
   <button (click)="onUpload()">
     Upload Image
   </button>
+
 </body>

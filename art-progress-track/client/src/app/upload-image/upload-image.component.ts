@@ -43,6 +43,8 @@ export class UploadImageComponent {
     date: 0,
   }
 
+  description = new FormControl('');
+
   constructor(private router: Router, private userService: UserService, private imageService: ImageService, 
     private fireStorage:AngularFireStorage, private homeComponent:HomeComponent, public auth: AuthService, private elementRef:ElementRef) {
 
@@ -128,6 +130,7 @@ export class UploadImageComponent {
         this.tempImg.email = user.email!;
         this.tempImg.url = this.url;
         this.tempImg.date = Date.now();
+        this.tempImg.description = this.description.value!;
         console.log('tempimg', this.tempImg);
         this.imageService.createImage(this.tempImg).subscribe({
           next: () => {
