@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export interface Image {
     _id?: string;
     email?: string;

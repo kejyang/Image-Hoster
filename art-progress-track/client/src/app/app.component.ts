@@ -10,14 +10,15 @@ import { AuthService } from '@auth0/auth0-angular';
       
       <span>
         <u *ngIf="auth.user$ | async as user">
-          <button class="astext" [routerLink]="['home/user-page']">Your Page</button>
+          <a routerLink="home/user-page">Your Page</a>
+
         </u>
       </span>
       <span><app-auth-button></app-auth-button></span>
     </div>
   </div>
 
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   `,
   styles: [`
   .nav {
@@ -43,6 +44,12 @@ import { AuthService } from '@auth0/auth0-angular';
     padding:0;
     cursor: pointer;
     color: #fff;
+  }
+
+  a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
   }
   `]
 })

@@ -25,6 +25,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { ImagePageComponent } from './image-page/image-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { GlobalImagesComponent } from './global-images/global-images.component';
 
 
 
@@ -38,6 +39,7 @@ import { UserPageComponent } from './user-page/user-page.component';
     UploadImageComponent,
     ImagePageComponent,
     UserPageComponent,
+    GlobalImagesComponent,
   ],
   imports: [
     BrowserModule,

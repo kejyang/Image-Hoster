@@ -16,9 +16,6 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { HomeComponent } from '../home/home.component';
 
 
-
-
-
 @Component({
   selector: 'app-upload-image',
   templateUrl: './upload-image.component.html',
@@ -88,20 +85,9 @@ export class UploadImageComponent {
     }
   }
 
-  async onUpload(){
+  /* async onUpload(){
     this.auth.user$.subscribe(result=> {
       this.userService.getUser(result?.name!).subscribe((user) => {
-        this.tempUser = user;
-        this.tempUser.images?.unshift(this.url);
-        this.userService.updateUser(this.tempUser.email!, this.tempUser).subscribe({
-          next: () => {
-            //this.router.navigate(['/home/user-page']);
-          },
-          error: (error) => {
-            alert('Failed to update user');
-            console.error(error);
-          }
-        });
         this.tempImg.email = user.email!;
         this.tempImg.url = this.url;
         this.tempImg.date = Date.now();
@@ -115,9 +101,71 @@ export class UploadImageComponent {
             console.error(error);
           }
         });
+        this.imageService.getImages().subscribe(result =>{
+          console.log("the result of get images", result);
+          this.tempImg._id = result.find(i => i.url === this.tempImg.url)?._id;
+        });
+        console.log(this.tempImg._id);
+        this.tempUser = user;
+        this.tempUser.images?.unshift(this.tempImg);
+        this.userService.updateUser(this.tempUser.email!, this.tempUser).subscribe({
+          next: () => {
+            //this.router.navigate(['/home/user-page']);
+          },
+          error: (error) => {
+            alert('Failed to update user');
+            console.error(error);
+          }
+        });
+      });
+    });
+  } */
+
+
+  async onUpload(){
+    this.auth.user$.subscribe(result=> {
+      this.userService.getUser(result?.name!).subscribe((user) => {
+        this.tempImg.email = user.email!;
+        this.tempImg.url = this.url;
+        this.tempImg.date = Date.now();
+        console.log('tempimg', this.tempImg);
+        this.imageService.createImage(this.tempImg).subscribe({
+          next: () => {
+            this.imageService.getImages().subscribe(result =>{
+              this.tempImg._id = result.find(i => i.url === this.tempImg.url)?._id;
+              this.updateUser();
+            });
+            //this.router.navigate(['/home/user-page']);
+          },
+          error: (error) => {
+            alert('Failed to update image');
+            console.error(error);
+          }
+        });
       });
     });
   }
+
+  async updateUser(){
+    this.auth.user$.subscribe(result=> {
+      this.userService.getUser(result?.name!).subscribe((user) => {
+        this.tempUser = user;
+        this.tempUser.images?.unshift(this.tempImg);
+        console.log("tempimg in updateuser function", this.tempImg);
+        console.log("updateuser function", this.tempUser.images![0]);
+        this.userService.updateUser(this.tempUser.email!, this.tempUser).subscribe({
+          next: () => {
+            this.router.navigate(['/home/user-page']);
+          },
+          error: (error) => {
+            alert('Failed to update user');
+            console.error(error);
+          }
+        });
+      });
+    });
+  }
+
 
   async resizeImg(){
     //var img = document.getElementById("preview2") as HTMLImageElement;

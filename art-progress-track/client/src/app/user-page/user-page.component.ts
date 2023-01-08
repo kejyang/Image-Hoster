@@ -8,24 +8,7 @@ import { Image } from '../image';
 import { ImageService } from '../image.service';
 @Component({
   selector: 'user-page',
-  template: `
-    <app-upload-image></app-upload-image>
-    These are your images
-    <div>
-      Test Value : {{currUser.email}}
-    </div>
-    <div class="horizontal">
-      <tr *ngFor="let url of currUser.images">
-        <img src={{url}} class = "resized" [routerLink]="['/image-page', url]">
-        <td>
-          <button class="btn btn-danger" (click)="deleteImage(url)">Delete</button>
-        </td>
-      </tr>
-    </div>
-    <button class="btn btn-danger" (click)="testDeleteFunction()">Test Delete Images Collection</button>
-
-
-  `,
+  templateUrl: './user-page.component.html',
   styles: [
     `
     .resized {
@@ -72,9 +55,9 @@ export class UserPageComponent implements OnInit{
     /* console.log(this.currUser); */
   }
 
-  deleteImage(url:string): void{
-    console.log(url);
-    this.currUser.images?.splice(this.currUser.images?.indexOf(url), 1);
+  deleteImage(img:Image): void{
+    //console.log(url);
+    this.currUser.images?.splice(this.currUser.images?.indexOf(img), 1);
     this.auth.user$.subscribe(result=> {
       this.userService.updateUser(result?.name!, this.currUser).subscribe({
         next: () => {
@@ -85,34 +68,21 @@ export class UserPageComponent implements OnInit{
           console.error(error);
         }
       });
-    }); 
-
-    this.imageService.getImage(url).subscribe(result=> {
-/*       this.imageService.deleteImage(result._id!).subscribe({
-        next: () => {
-          this.router.navigate(['/home/user-page']);
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      }); */
+    });  
+    console.log('this is the image id', img._id);
+    this.imageService.deleteImage(img._id!).subscribe({
+      next: () => {
+        this.router.navigate(['/home/user-page']);
+      }
     });
-    
-    
   }
 
-  testDeleteFunction(){
-    this.imageService.getImage("").subscribe(result=>{
-      console.log(result._id);
-      
-    });
-
-    
+  testGetImageFunction(){
+    /* this.imageService.getImage().subscribe((img) => {
+      console.log(img);
+    }); */
   }
 
-  goToImagePage(): void{
 
-    console.log("go to image page method clicked"); 
-  }
 
 }

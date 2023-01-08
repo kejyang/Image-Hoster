@@ -1,0 +1,13 @@
+<app-upload-image></app-upload-image>
+These are your images
+<div>
+  Test Value : {{currUser.email}}
+</div>
+<div class="horizontal">
+  <tr *ngFor="let image of currUser.images">
+    <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url]">
+    <button class="btn btn-danger" (click)="deleteImage(image)">Delete</button>
+  </tr>
+</div>
+<button class="btn btn-danger" (click)="testGetImageFunction()">sdfghj</button>
+<button class="btn btn-danger" [routerLink]="['/home/upload-image-page']">Upload Image</button>

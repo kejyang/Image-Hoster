@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { Image } from './image';
+import { Url } from 'url';
  
 @Injectable({
  providedIn: 'root'
@@ -28,9 +29,15 @@ export class ImageService {
    return this.httpClient.get<User>(`${this.url}/users/${id}`);
  }*/
 
- getImage(image: string): Observable<Image> {
+/* getImage(image: string): Observable<Image> {
   return this.httpClient.get<Image>(`${this.url}/images/${image}`);
-}
+}  */
+
+getImage(image: string): Observable<Image> {
+  console.log('this is the image service image', image)
+  return this.httpClient.get<Image>(`${this.url}/images/${image}`);
+} 
+
  
  createImage(image: Image): Observable<string> {
    return this.httpClient.post(`${this.url}/images`, image, { responseType: 'text' });
@@ -44,7 +51,7 @@ export class ImageService {
    return this.httpClient.delete(`${this.url}/images/${image}`, { responseType: 'text' });
  } */
 
- deleteImage(url: string): Observable<string> {
-  return this.httpClient.delete(`${this.url}/images/${url}`, { responseType: 'text' });
+ deleteImage(image: string): Observable<string> {
+  return this.httpClient.delete(`${this.url}/images/${image}`, { responseType: 'text' });
 }
 }
