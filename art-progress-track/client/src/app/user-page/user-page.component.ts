@@ -6,6 +6,9 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import { Image } from '../image';
 import { ImageService } from '../image.service';
+
+
+
 @Component({
   selector: 'user-page',
   templateUrl: './user-page.component.html',
@@ -35,7 +38,7 @@ export class UserPageComponent implements OnInit{
 
   imgArray: String[] = [];
 
-  constructor(public auth: AuthService, private imageService: ImageService, private userService: UserService, private router: Router) {}
+  constructor(public auth: AuthService, private imageService: ImageService, private userService: UserService, private router: Router,) {}
 
   ngOnInit(): void {
     this.getCurrentUser();

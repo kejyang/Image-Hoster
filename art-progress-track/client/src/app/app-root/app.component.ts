@@ -3,23 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <div class="nav">
-    <div><span class="astext" [routerLink]="['/']">Home</span></div>
-    <div>
-      
-      <span>
-        <u *ngIf="auth.user$ | async as user">
-          <a routerLink="home/user-page">Your Page</a>
-
-        </u>
-      </span>
-      <span><app-auth-button></app-auth-button></span>
-    </div>
-  </div>
-
-  <router-outlet></router-outlet>
-  `,
+  templateUrl:'./app.component.html',
   styles: [`
   .nav {
     position: sticky;

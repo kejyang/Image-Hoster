@@ -5,7 +5,7 @@
 
   <img [src]= url class = "resized" alt="Preview" id = "preview">
   
-  <div><input type="text" alt="Description" [formControl]="description"></div>
+  <div><input type="text" [formControl]="description" placeholder="Write your description here."></div>
   
   <button (click)="onUpload()">
     Upload Image

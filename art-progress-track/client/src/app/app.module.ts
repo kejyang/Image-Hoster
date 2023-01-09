@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app-root/app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { UsersListComponent } from './users-list/users-list.component';
@@ -26,6 +29,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { ImagePageComponent } from './image-page/image-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { GlobalImagesComponent } from './global-images/global-images.component';
+import { UserImageEditComponent } from './user-image-edit/user-image-edit.component';
 
 
 
@@ -40,6 +44,7 @@ import { GlobalImagesComponent } from './global-images/global-images.component';
     ImagePageComponent,
     UserPageComponent,
     GlobalImagesComponent,
+    UserImageEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,9 @@ import { GlobalImagesComponent } from './global-images/global-images.component';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
     BrowserAnimationsModule,
     RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
