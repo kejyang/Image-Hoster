@@ -24,6 +24,10 @@ import { ImageService } from '../image.service';
       
       flex-wrap:wrap;
     }
+
+    .uploadImage{
+      display: none;
+    }
     
 `
   ]
@@ -42,7 +46,6 @@ export class UserPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCurrentUser();
-
   } 
   /* ngOnChanges(): void{
     this.getCurrentUser();
@@ -80,12 +83,13 @@ export class UserPageComponent implements OnInit{
     });
   }
 
-  testGetImageFunction(){
-    /* this.imageService.getImage().subscribe((img) => {
-      console.log(img);
-    }); */
+  reveal(): void{
+    var x = document.getElementById("uploadImage")!;
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
   }
-
-
 
 }

@@ -63,6 +63,7 @@ async function applySchemaValidationImage(db: mongodb.Db) {
             additionalProperties: false,
             properties: {
                 _id: {},
+                title: {},
                 email: {
                     bsonType: "string",
                     description: "'email' is required and is a string",

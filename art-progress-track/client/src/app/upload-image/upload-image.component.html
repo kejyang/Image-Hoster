@@ -4,6 +4,8 @@
   <input type = "file" (change) = "onFileChange($event)">
 
   <img [src]= url class = "resized" alt="Preview" id = "preview">
+
+  <div><input type="text" [formControl]="title" placeholder="Write the title here."></div>
   
   <div><input type="text" [formControl]="description" placeholder="Write your description here."></div>
   

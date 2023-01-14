@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
+import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../user';
+import { Image } from '../image';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'user-image-edit',
@@ -7,27 +14,160 @@ import { ActivatedRoute, Router } from '@angular/router';
     <p>
       user-image-edit works!
     </p>
-    <img [src]= url>
+    <body class = gray>
+      <div class = center>
+        <button (click)="originalSize()">Click resize image if applicable.</button>
+      </div>
+      <div class = center>
+        <img [src]= tempImg.url id = "image" class = "box1">
+      </div>
+      <div class = "center white">
+        {{tempImg.title}}
+      </div>
+      <div class = "center white">
+        {{tempImg.description}}
+      </div>
+    </body>
+    <button class="btn btn-danger" (click)="deleteImage(tempImg)">Delete</button>
+    <button class="btn btn-danger" (click) = "reveal()">Edit Image</button>
+    <div class = "editImage" id = "editImage">
+      <input type="text" [formControl]="title" placeholder="Write the new title here.">
+  
+      <input type="text" [formControl]="description" placeholder="Write the new description here.">
+
+      <button class="btn btn-danger" (click)="editImage()">Submit Changes</button>
+
+    </div>
   `,
-  styles: [
+  styles: [`
+  .box1 {
+    max-width: 600px;
+    max-height: 600px;
+  }
+
+  .box2 {
+    max-width: 10000px;
+    max-height: 10000px;
+  }
+
+  .img {
+    max-width:100%; height:auto;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .white {
+    background-color: white;
+  }
+
+  .gray{
+    background-color: rgb(245, 245, 245);
+    height: 100vh;
+  }
+
+  .editImage{
+    display: none;
+  }
+  `
   ]
 })
 export class UserImageEditComponent {
 
-  url = ''
+  id = ''
+
+  tempImg : Image = {
+    title: '',
+    email: '',
+    url: '',
+    description: '',
+    date: 0,
+  }
+
+  currUser : User = {
+    email: '',
+    images: [],
+  }; 
+
+  description = new FormControl('');
+  title = new FormControl('');
 
   ngOnInit() {
-    this.url = this.route.snapshot.paramMap.get('img')!;
-    if (!this.url) {
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    if (!this.id) {
       alert('No url provided');
     }
-    console.log(this.url);
+    console.log(this.id);
+
+    this.imageService.getImage(this.id).subscribe((image) => {
+      this.tempImg = image;
+    });
+    this.getCurrentUser();
   }
 
   constructor(
-    private router: Router,
+    public auth: AuthService, private imageService: ImageService, private userService: UserService, private router: Router,
     private route: ActivatedRoute,
   ) { }
 
-  
+  private getCurrentUser(): void{
+    this.auth.user$.subscribe(result=> {
+      this.userService.getUser(result?.name!).subscribe((user) => {
+        this.currUser = user;
+        console.log(this.currUser);
+      });
+    }); 
+    /* console.log(this.currUser); */
+  }
+
+  deleteImage(img:Image): void{
+    //console.log(url);
+    this.currUser.images?.splice(this.currUser.images?.indexOf(img), 1);
+    this.auth.user$.subscribe(result=> {
+      this.userService.updateUser(result?.name!, this.currUser).subscribe({
+        next: () => {
+          //this.router.navigate(['/home/user-page']);
+        },
+        error: (error) => {
+          alert('Failed to update employee');
+          console.error(error);
+        }
+      });
+    });  
+    console.log('this is the image id', img._id);
+    this.imageService.deleteImage(img._id!).subscribe({
+      next: () => {
+        this.router.navigate(['/home/user-page']);
+      }
+    });
+  }
+
+  originalSize(): void {
+    var element = document.getElementById("image");
+    element!.classList.toggle("box2");
+    console.log(element)
+  } 
+
+  reveal(): void{
+    var x = document.getElementById("editImage")!;
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+  editImage(): void{
+    this.tempImg.description = this.description.value!;
+    this.tempImg.title = this.title.value!;
+    this.imageService.updateImage(this.id, this.tempImg).subscribe({
+      next: () => {
+        location.reload();
+      },
+    });
+  }
+
 }

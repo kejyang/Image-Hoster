@@ -28,7 +28,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class UploadImageComponent {
 
-  title = 'imageupload';
+  //title = 'imageupload';
   Users$ = this.homeComponent.Users$;
   url = '';
   tempUser : User = {
@@ -37,6 +37,7 @@ export class UploadImageComponent {
   };
 
   tempImg : Image = {
+    title: '',
     email: '',
     url: '',
     description: '',
@@ -44,6 +45,7 @@ export class UploadImageComponent {
   }
 
   description = new FormControl('');
+  title = new FormControl('');
 
   constructor(private router: Router, private userService: UserService, private imageService: ImageService, 
     private fireStorage:AngularFireStorage, private homeComponent:HomeComponent, public auth: AuthService, private elementRef:ElementRef) {
@@ -131,6 +133,7 @@ export class UploadImageComponent {
         this.tempImg.url = this.url;
         this.tempImg.date = Date.now();
         this.tempImg.description = this.description.value!;
+        this.tempImg.title = this.title.value!;
         console.log('tempimg', this.tempImg);
         this.imageService.createImage(this.tempImg).subscribe({
           next: () => {
@@ -158,7 +161,8 @@ export class UploadImageComponent {
         console.log("updateuser function", this.tempUser.images![0]);
         this.userService.updateUser(this.tempUser.email!, this.tempUser).subscribe({
           next: () => {
-            this.router.navigate(['/home/user-page']);
+            location.reload();
+            //this.router.navigate(['/home/user-page']);
           },
           error: (error) => {
             alert('Failed to update user');

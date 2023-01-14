@@ -30,6 +30,7 @@ import { ImagePageComponent } from './image-page/image-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { GlobalImagesComponent } from './global-images/global-images.component';
 import { UserImageEditComponent } from './user-image-edit/user-image-edit.component';
+import { ImageSearchComponent } from './image-search/image-search.component';
 
 
 
@@ -45,6 +46,7 @@ import { UserImageEditComponent } from './user-image-edit/user-image-edit.compon
     UserPageComponent,
     GlobalImagesComponent,
     UserImageEditComponent,
+    ImageSearchComponent,
   ],
   imports: [
     BrowserModule,

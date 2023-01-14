@@ -15,7 +15,7 @@ imageRouter.get("/", async (_req, res) => {
 });
 
 
-  imageRouter.get("/:url", async (req, res) => {
+/*   imageRouter.get("/:url", async (req, res) => {
     try {
         const _url = req?.params?.url;
         console.log(_url);
@@ -29,6 +29,23 @@ imageRouter.get("/", async (_req, res) => {
   
     } catch (error) {
         res.status(404).send(`Failed to find an user: ID ${req?.params?.url}`);
+    }
+ });  */
+
+ imageRouter.get("/:id", async (req, res) => {
+    try {
+        const id = req?.params?.id;
+        const query = { _id: new mongodb.ObjectId(id) };
+        const image = await collections.images.findOne(query);
+  
+        if (image) {
+            res.status(200).send(image);
+        } else {
+            res.status(404).send(`Failed to find a user: ID ${id}`);
+        }
+  
+    } catch (error) {
+        res.status(404).send(`Failed to find an user: ID ${req?.params?.id}`);
     }
  }); 
 
@@ -50,29 +67,27 @@ imageRouter.get("/", async (_req, res) => {
     }
  });
 
-/*  imageRouter.put("/:email", async (req, res) => {
+  imageRouter.put("/:id", async (req, res) => {
     try {
-        const _email = req?.params?.email;
-        const image = req.body;
-        const query = { email: _email };
+        const id = req?.params?.id;
+        const query = { _id: new mongodb.ObjectId(id) };
         const result = await collections.images.updateOne(query, { $set: {
-            email: req.body.email,
-            image: req.body.image,
-            date: req.body.date,
+            title: req.body.title,
+            description: req.body.description,
         } });
   
         if (result && result.matchedCount) {
-            res.status(200).send(`Updated an user: ID ${_email}.`);
+            res.status(200).send(`Updated an user: ID ${id}.`);
         } else if (!result.matchedCount) {
-            res.status(404).send(`Failed to find an user: ID ${_email}`);
+            res.status(404).send(`Failed to find an user: ID ${id}`);
         } else {
-            res.status(304).send(`Failed to update an user: ID ${_email}`);
+            res.status(304).send(`Failed to update an user: ID ${id}`);
         }
     } catch (error) {
         console.error(error.message);
         res.status(400).send(error.message);
     }
- }); */
+ }); 
 
    /* imageRouter.delete("/:url", async (req, res) => {
     try {

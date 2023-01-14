@@ -13,7 +13,7 @@ export class ImageService {
  
  constructor(private httpClient: HttpClient) { }
  
- private refreshusers() {
+ private refreshImages() {
    this.httpClient.get<Image[]>(`${this.url}/images`)
      .subscribe(images => {
        this.images$.next(images);
@@ -21,7 +21,7 @@ export class ImageService {
  }
  
  getImages(): Subject<Image[]> {
-   this.refreshusers();
+   this.refreshImages();
    return this.images$;
  }
  
@@ -33,19 +33,24 @@ export class ImageService {
   return this.httpClient.get<Image>(`${this.url}/images/${image}`);
 }  */
 
-getImage(image: string): Observable<Image> {
+/* getImage(image: string): Observable<Image> {
   console.log('this is the image service image', image)
   return this.httpClient.get<Image>(`${this.url}/images/${image}`);
+}  */
+
+getImage(id: string): Observable<Image> {
+  console.log('this is the image service image get by id', id)
+  return this.httpClient.get<Image>(`${this.url}/images/${id}`);
 } 
 
  
- createImage(image: Image): Observable<string> {
-   return this.httpClient.post(`${this.url}/images`, image, { responseType: 'text' });
- }
+createImage(image: Image): Observable<string> {
+  return this.httpClient.post(`${this.url}/images`, image, { responseType: 'text' });
+}
  
-/*  updateUser(email: string, image: Image): Observable<string> {
-   return this.httpClient.put(`${this.url}/images/${email}`, image, { responseType: 'text' });
- } */
+updateImage(id: string, image: Image): Observable<string> {
+   return this.httpClient.put(`${this.url}/images/${id}`, image, { responseType: 'text' });
+ } 
  
 /*  deleteImage(image: string): Observable<string> {
    return this.httpClient.delete(`${this.url}/images/${image}`, { responseType: 'text' });
@@ -55,3 +60,4 @@ getImage(image: string): Observable<Image> {
   return this.httpClient.delete(`${this.url}/images/${image}`, { responseType: 'text' });
 }
 }
+

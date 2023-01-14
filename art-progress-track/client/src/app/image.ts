@@ -1,7 +1,6 @@
-import { Url } from "url";
-
 export interface Image {
     _id?: string;
+    title: string;
     email?: string;
     url?: string;
     description?: string;
