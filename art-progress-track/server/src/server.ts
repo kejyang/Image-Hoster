@@ -38,6 +38,9 @@ connectToDatabase(ATLAS_URI)
        app.use("/images", imageRouter);
        // start the Express server
        app.listen(5200, () => {
+        app.get('/', (req, res) => {
+          res.sendStatus(200)
+        })
            console.log(`Server running at http://localhost:5200...`);
        });
  
