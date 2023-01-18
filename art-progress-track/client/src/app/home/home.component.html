@@ -1,20 +1,22 @@
 <header>
-    <h1>Welcome!</h1>
+    <h1 class="center">Welcome!</h1>
 </header>
 <app-auth-button></app-auth-button>
 
 <ul *ngIf="auth.user$ | async as user">
-  <tbody>
+<!--   <tbody>
     <tr *ngFor="let account of Users$ | async as user">
       <td>{{account.email}}</td>
       <td>{{account.images}}</td>
     </tr>
   </tbody>
-<app-user-add-test></app-user-add-test> 
-<!-- <img src="https://firebasestorage.googleapis.com/v0/b/art-progress-tracker.appspot.com/o/images%2Fbathroom.png?alt=media&token=40c75b26-9acd-4312-9e8b-ce317c0606e3" alt="alternatetext"> --> 
+  <app-user-add-test></app-user-add-test>  -->
+
 </ul> 
-<td>curruser email: {{currUser.email}}</td>
-<!-- <user-page currUser ="asd"></user-page> -->
-<button class="btn btn-primary me-1" [routerLink]="['user-page']">go to user page</button>
-<button class="btn btn-primary me-1" [routerLink]="['../image-search']">go to image search</button>
+<!-- <td>curruser email: {{currUser.email}}</td> -->
+
+
+<div id = "works">
+  Works
+</div>
 <app-global-images></app-global-images>

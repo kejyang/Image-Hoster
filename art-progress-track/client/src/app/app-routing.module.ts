@@ -8,14 +8,15 @@ import { GlobalImagesComponent } from './global-images/global-images.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { UserImageEditComponent } from './user-image-edit/user-image-edit.component';
 import { ImageSearchComponent } from './image-search/image-search.component';
-
+import { OtherUsersPageComponent } from './other-users-page/other-users-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UsersListComponent },
-  { path: 'image-page/:img/:description/:title', component: ImagePageComponent },
+  { path: 'image-page/:img/:description/:title/:email', component: ImagePageComponent },
   { path: 'home/user-page', component: UserPageComponent },
+  { path: 'other-users-page/:email', component: OtherUsersPageComponent  },
   { path: 'home/all-images', component: GlobalImagesComponent },
   { path : 'home/upload-image-page', component: UploadImageComponent},
   { path : 'user-image-edit/:id', component: UserImageEditComponent},

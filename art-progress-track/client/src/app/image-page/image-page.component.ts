@@ -12,14 +12,17 @@ import { ActivatedRoute, Router } from '@angular/router';
         <img [src]= url id = "image" class = "box1 white">
       </div>
       <br>
-      <div class = "center white description">
-        <div>
-          {{title}}
-        </div>
-        <div>
-          {{description}}
-        </div>
+
+      <div class = "center white descriptors">
+        {{title}}
       </div>
+      <div class = "center white descriptors">
+        {{description}}
+      </div>
+      <div class = "center white descriptors">
+        <a [routerLink]="['../../../../../other-users-page/', email]">{{email}}</a>
+      </div>
+
   </body>
   `,
   styles: [`
@@ -43,7 +46,7 @@ import { ActivatedRoute, Router } from '@angular/router';
       justify-content: center;
     }
 
-    .description {
+    .descriptors {
       width: 50%;
       margin: 0 auto;
     }
@@ -61,14 +64,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   ]
 })
 export class ImagePageComponent {
-  title = ''
-  url = ''
-  description = ''
+  title = '';
+  url = '';
+  description = '';
+  email = '';
 
   ngOnInit() {
     this.url = this.route.snapshot.paramMap.get('img')!;
     this.description = this.route.snapshot.paramMap.get('description')!
     this.title = this.route.snapshot.paramMap.get('title')!
+    this.email = this.route.snapshot.paramMap.get('email')!
     if (!this.url) {
       alert('No url provided');
     }

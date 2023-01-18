@@ -23,13 +23,18 @@ import { HomeComponent } from '../home/home.component';
     .resized {
       max-width: 100px;
       max-height: 150px;
-    }`
+    }
+
+    .uploadButton{
+      display: none;
+    }
+    `
   ]
 })
 export class UploadImageComponent {
 
   //title = 'imageupload';
-  Users$ = this.homeComponent.Users$;
+  //Users$ = this.homeComponent.Users$;
   url = '';
   tempUser : User = {
     email: '',
@@ -43,6 +48,8 @@ export class UploadImageComponent {
     description: '',
     date: 0,
   }
+
+  fileLoaded = false;
 
   description = new FormControl('');
   title = new FormControl('');
@@ -87,7 +94,10 @@ export class UploadImageComponent {
       const uploadTask =await this.fireStorage.upload(path,file);
       this.url = await uploadTask.ref.getDownloadURL();
     }
+    var x = document.getElementById("uploadButton")!;
+    x.style.display = "block";
   }
+
 
   /* async onUpload(){
     this.auth.user$.subscribe(result=> {

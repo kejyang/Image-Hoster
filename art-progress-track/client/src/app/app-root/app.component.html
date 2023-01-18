@@ -1,8 +1,7 @@
 <div class="nav">
-    <div><span class="astext" [routerLink]="['/home']">Home</span></div>
-    
+    <div><a class="astext" [routerLink]="['/home']">Home</a></div>
     <div>
-      
+      <span><a routerLink="image-search">Search for Images</a></span>
       <span>
         <u *ngIf="auth.user$ | async as user">
           <a routerLink="home/user-page">Your Page</a>

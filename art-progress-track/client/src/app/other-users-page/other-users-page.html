@@ -1,0 +1,13 @@
+<div class = "name">
+  {{user.email}}
+</div>
+<div id = "works">
+  Works
+</div>
+<div class="horizontal">
+  <tr *ngFor="let image of user.images">
+    <!-- <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description]"> -->
+    <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description, image.title, image.email]">
+    <div id = "title" [routerLink]="['/image-page', image.url, image.description, image.title,image.email]">{{image.title}}</div>
+  </tr>
+</div>

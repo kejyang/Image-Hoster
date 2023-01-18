@@ -10,19 +10,36 @@ import { ImageService } from '../image.service';
 @Component({
   selector: 'app-global-images',
   template: `
-  <div class=center>These are all the images</div>
 
   <div class="horizontal">
     <tr *ngFor="let image of imgArray$">
-      <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description, image.title]">
+      <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description, image.title, image.email]">
+      <div id = "title" [routerLink]="['/image-page', image.url, image.description, image.title,image.email]">{{image.title}}</div>
+      <div id = "artist" [routerLink]="['/other-users-page', image.email]">{{image.email}}</div>
     </tr>
   </div>
   `,
   styles: [`
+
+  #title {
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  #artist {
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
+
+
   .resized {
-    max-width: 100px;
     max-height: 150px;
-    margin:20px;
+    margin-right: 40px;
   }
 
   .horizontal {
@@ -46,6 +63,7 @@ export class GlobalImagesComponent {
   ngOnInit(): void {
     this.imageService.getImages().subscribe( result =>{
       this.imgArray$ = result;
+      this.imgArray$ = this.imgArray$.reverse();
     });
   }
 }

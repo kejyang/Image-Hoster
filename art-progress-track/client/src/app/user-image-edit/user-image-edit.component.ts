@@ -11,9 +11,6 @@ import { ImageService } from '../image.service';
 @Component({
   selector: 'user-image-edit',
   template: `
-    <p>
-      user-image-edit works!
-    </p>
     <body class = gray>
       <div class = center>
         <button (click)="originalSize()">Click resize image if applicable.</button>
@@ -27,17 +24,21 @@ import { ImageService } from '../image.service';
       <div class = "center white">
         {{tempImg.description}}
       </div>
-    </body>
-    <button class="btn btn-danger" (click)="deleteImage(tempImg)">Delete</button>
-    <button class="btn btn-danger" (click) = "reveal()">Edit Image</button>
-    <div class = "editImage" id = "editImage">
-      <input type="text" [formControl]="title" placeholder="Write the new title here.">
+      <button class="btn btn-danger" (click)="deleteImage(tempImg)">Delete</button>
+
+      <button class="btn btn-danger" (click) = "reveal()">Edit Image</button>
+
+      <div class = "editImage" id = "editImage">
+      
+        <input type="text" [formControl]="title" placeholder="Write the new title here.">
+    
+        <input type="text" [formControl]="description" placeholder="Write the new description here.">
   
-      <input type="text" [formControl]="description" placeholder="Write the new description here.">
+        <button class="btn btn-danger" (click)="editImage()">Submit Changes</button>
+  
+      </div>
+    </body>
 
-      <button class="btn btn-danger" (click)="editImage()">Submit Changes</button>
-
-    </div>
   `,
   styles: [`
   .box1 {

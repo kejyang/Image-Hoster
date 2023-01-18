@@ -14,19 +14,50 @@ import { ImageService } from '../image.service';
   templateUrl: './user-page.component.html',
   styles: [
     `
+    #title {
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    img:hover {
+      cursor: pointer;
+    }
+
     .resized {
-      max-width: 150px;
       max-height: 150px;
+      margin-right: 40px;
     }
 
     .horizontal {
       display: flex;
-      
+      margin-left: 3%;
       flex-wrap:wrap;
     }
 
     .uploadImage{
+      margin-left: 3%;
+    }
+
+    .uploadImageButton{
       display: none;
+    }
+
+    .name{
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 3%;
+      margin-left: 3%;
+      margin-bottom:2%;
+    }
+
+    #works{
+      font-weight: bold;
+      border-bottom: 3px solid rgb(0,160,255);
+      width:20%;
+      margin-top:1%;
+      margin-bottom: 2%;
+      margin-left: 3%;
     }
     
 `
@@ -84,7 +115,7 @@ export class UserPageComponent implements OnInit{
   }
 
   reveal(): void{
-    var x = document.getElementById("uploadImage")!;
+    var x = document.getElementById("uploadImageButton")!;
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {
