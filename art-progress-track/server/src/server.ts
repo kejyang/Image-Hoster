@@ -28,21 +28,21 @@ if (!ATLAS_URI) {
 connectToDatabase(ATLAS_URI)
    .then(() => {
       const app = express();
-       app.use(cors());
+      app.get('/', (req, res) => {
+        res.sendStatus(200)
+      })
+      app.use(cors());
  
        //app.use(auth(config));
        /*app.get('/', (req, res) => {
         res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
       });*/
-       app.use("/users", userRouter);
-       app.use("/images", imageRouter);
-       // start the Express server
-       app.listen(5200, () => {
-        app.get('/', (req, res) => {
-          res.sendStatus(200)
-        })
-           console.log(`Server running at http://localhost:5200...`);
-       });
+      app.use("/users", userRouter);
+      app.use("/images", imageRouter);
+      // start the Express server
+      app.listen(5200, () => {
+        console.log(`Server running at http://localhost:5200...`);
+      });
  
    })
    .catch(error => console.error(error));

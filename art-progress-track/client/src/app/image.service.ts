@@ -8,7 +8,8 @@ import { Url } from 'url';
  providedIn: 'root'
 })
 export class ImageService {
- private url = 'http://localhost:5200';
+ /* private url = 'http://localhost:5200'; */
+ private url = 'https://art-hoster.onrender.com';
  private images$: Subject<Image[]> = new Subject();
  
  constructor(private httpClient: HttpClient) { }
