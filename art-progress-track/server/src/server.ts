@@ -14,7 +14,7 @@ const { ATLAS_URI } = process.env;
 
 function opensnack(text: string) : void {
   console.log(text);
-  //this.userService.get();
+  this.userService.get();
 }
 
 
@@ -50,7 +50,7 @@ connectToDatabase(ATLAS_URI)
       app.listen(5200, () => {
         console.log(`Server running at http://localhost:5200...`);
       });
-      setInterval(opensnack, 10000, "my text");
+      setInterval(opensnack, 20000, "my text");
       
  
    })
