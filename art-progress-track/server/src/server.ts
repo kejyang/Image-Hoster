@@ -4,12 +4,14 @@ import express from "express";
 import { userRouter } from "./user.routes";
 import { imageRouter } from "./image.routes";
 import { connectToDatabase } from "./database";
-import { auth } from "express-openid-connect";
+import { interval } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
  
 // Load environment variables from the .env file, where the ATLAS_URI is configured
 dotenv.config();
  
 const { ATLAS_URI } = process.env;
+
 
 /*const config = {
     authRequired: false,
@@ -43,6 +45,10 @@ connectToDatabase(ATLAS_URI)
       app.listen(5200, () => {
         console.log(`Server running at http://localhost:5200...`);
       });
+      interval(840000).pipe(takeWhile(() => !stop))
+        .subscribe(() => {
+          console.log("keep render running");
+        });
  
    })
    .catch(error => console.error(error));
