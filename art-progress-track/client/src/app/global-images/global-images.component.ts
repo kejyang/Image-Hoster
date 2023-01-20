@@ -57,13 +57,17 @@ import { ImageService } from '../image.service';
 export class GlobalImagesComponent {
 
   imgArray$: Image[] = []; 
+  reversed = false;
 
   constructor(public auth: AuthService, private imageService: ImageService, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.imageService.getImages().subscribe( result =>{
       this.imgArray$ = result;
-      this.imgArray$ = this.imgArray$.reverse();
+      if(this.reversed === false){
+        this.imgArray$ = this.imgArray$.reverse();
+        this.reversed = true;
+      }
     });
   }
 }

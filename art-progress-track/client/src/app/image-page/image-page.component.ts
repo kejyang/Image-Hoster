@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
       </div>
       <br>
 
-      <div class = "center white descriptors">
+      <div class = "center white descriptors bolded">
         {{title}}
       </div>
       <div class = "center white descriptors">
@@ -49,6 +49,10 @@ import { ActivatedRoute, Router } from '@angular/router';
     .descriptors {
       width: 50%;
       margin: 0 auto;
+    }
+
+    .bolded { 
+      font-weight: bold; 
     }
 
     .white {

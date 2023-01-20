@@ -18,24 +18,30 @@ import { ImageService } from '../image.service';
       <div class = center>
         <img [src]= tempImg.url id = "image" class = "box1">
       </div>
-      <div class = "center white">
+      <div class = "center white bolded">
         {{tempImg.title}}
       </div>
       <div class = "center white">
         {{tempImg.description}}
       </div>
-      <button class="btn btn-danger" (click)="deleteImage(tempImg)">Delete</button>
+      <div class=center>
 
-      <button class="btn btn-danger" (click) = "reveal()">Edit Image</button>
+        <button class="btn btn-danger" (click)="deleteImage(tempImg)">Delete</button>
+
+        <button class="btn btn-danger" (click) = "reveal()">Edit Image</button>
+
+      </div>
 
       <div class = "editImage" id = "editImage">
       
-        <input type="text" [formControl]="title" placeholder="Write the new title here.">
-    
-        <input type="text" [formControl]="description" placeholder="Write the new description here.">
-  
-        <button class="btn btn-danger" (click)="editImage()">Submit Changes</button>
-  
+        <div class = "center">
+          <input type="text" [formControl]="title" placeholder="Write the new title here.">
+          <div>
+          <input type="text" [formControl]="description" placeholder="Write the new description here.">
+          <button class="btn btn-danger" (click)="editImage()">Submit Changes</button>
+            
+          </div>
+        </div>
       </div>
     </body>
 
@@ -59,6 +65,10 @@ import { ImageService } from '../image.service';
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .bolded { 
+    font-weight: bold; 
   }
 
   .white {

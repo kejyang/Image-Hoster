@@ -27,6 +27,10 @@ if (!ATLAS_URI) {
    process.exit(1);
 }
 
+function opensnack(text: string) : void {
+  console.log(text);
+}
+
 connectToDatabase(ATLAS_URI)
    .then(() => {
       const app = express();
@@ -45,10 +49,8 @@ connectToDatabase(ATLAS_URI)
       app.listen(5200, () => {
         console.log(`Server running at http://localhost:5200...`);
       });
-      interval(840000).pipe(takeWhile(() => !stop))
-        .subscribe(() => {
-          console.log("keep render running");
-        });
+      
+      setInterval(opensnack, 840000, "keep render awake");
  
    })
    .catch(error => console.error(error));
