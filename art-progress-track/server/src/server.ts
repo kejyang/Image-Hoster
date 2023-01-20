@@ -12,6 +12,11 @@ dotenv.config();
  
 const { ATLAS_URI } = process.env;
 
+function opensnack(text: string) : void {
+  console.log(text);
+  //this.userService.get();
+}
+
 
 /*const config = {
     authRequired: false,
@@ -25,10 +30,6 @@ const { ATLAS_URI } = process.env;
 if (!ATLAS_URI) {
    console.error("No ATLAS_URI environment variable has been defined in config.env");
    process.exit(1);
-}
-
-function opensnack(text: string) : void {
-  console.log(text);
 }
 
 connectToDatabase(ATLAS_URI)
@@ -49,10 +50,8 @@ connectToDatabase(ATLAS_URI)
       app.listen(5200, () => {
         console.log(`Server running at http://localhost:5200...`);
       });
+      setInterval(opensnack, 10000, "my text");
       
-      setInterval(app.get('/', (req, res) => {
-        res.sendStatus(200)
-      }), 840000);
  
    })
    .catch(error => console.error(error));
