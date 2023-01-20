@@ -50,7 +50,9 @@ connectToDatabase(ATLAS_URI)
         console.log(`Server running at http://localhost:5200...`);
       });
       
-      setInterval(opensnack, 840000, "keep render awake");
+      setInterval(app.get('/', (req, res) => {
+        res.sendStatus(200)
+      }), 840000);
  
    })
    .catch(error => console.error(error));
