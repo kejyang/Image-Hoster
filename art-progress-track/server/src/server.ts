@@ -14,7 +14,7 @@ const { ATLAS_URI } = process.env;
 
 function opensnack(text: string) : void {
   console.log(text);
-  this.userService.get();
+  //userRouter.get('/');
 }
 
 
