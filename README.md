@@ -9,35 +9,36 @@ delete images.
 Features
 ----
 
-Home 
-----
+__Home__ 
 
 This is the starting page. All the works uploaded by all users are shown here. Clicking on the image or title will lead to the image page of that image.
 Clicking on the username will lead to that user's page. This page can be accessed any time by clicking the home link on the navbar.
 
-Login
+__Login__
 
 Clicking on the login link will lead to a login page by Auth0. The user can either sign up or login. After logging in the user will be redirected back to the home
 page and the login link will turn into a logout link.
 
-Search
+__Search__
 
 Clicking on this link will lead the user to a search page. The user can either search for titles or users. At the moment the search function is case sensitive
 and only accepts exact answers.
 
-Image Page
+__Image Page__
 
 The image page is the page after clicking on another user's image. If the image was resized to fix the screen the resize button will return it back to its original
 size. 
 
-Other User Pages
+__Other User Pages__
 
 The page the user sees when clicking on another user's name. Here you can see all the works they have created.
 
-Your Page
+__Your Page__
 
 The user's page that can only be accessed once the user logs in. You can see your own works. When you click on your images on this page it will lead to
 the user-image-page where the user will be able to edit the title/description or be able to delete the picture.
 
+__User image page__
 
+Here you can view your own work and either edit the title/description or deltet the image.
 
