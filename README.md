@@ -1,4 +1,4 @@
-Introduction
+<h2>Introduction</h2>
 
 Art progress tracker is a website that lets users host their drawings online. When the user opens up the website they are shown all the works that
 the users of the website have uploaded. The user can click on these images to go to their respective image page or click on the username underneath 
