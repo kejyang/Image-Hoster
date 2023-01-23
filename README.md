@@ -34,7 +34,8 @@ The page the user sees when clicking on another user's name. Here you can see al
 
 Your Page
 
-The user's page that can only be accessed once the user logs in.
+The user's page that can only be accessed once the user logs in. You can see your own works. When you click on your images on this page it will lead to
+the user-image-page where the user will be able to edit the title/description or be able to delete the picture.
 
 
 
