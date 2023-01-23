@@ -7,8 +7,10 @@ sign in. When signed in they can access their own user page which will allow the
 delete images.
 
 Features
+----
 
 Home 
+----
 
 This is the starting page. All the works uploaded by all users are shown here. Clicking on the image or title will lead to the image page of that image.
 Clicking on the username will lead to that user's page. This page can be accessed any time by clicking the home link on the navbar.
