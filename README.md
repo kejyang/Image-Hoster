@@ -26,19 +26,31 @@ page and the login link will turn into a logout link.
 
 __Search__
 
+![image](https://user-images.githubusercontent.com/38774593/214183303-8bb3a732-3110-4484-a3dc-07d41e02cf45.png)
+![image](https://user-images.githubusercontent.com/38774593/214183399-945c71e8-6d92-4257-acd0-ba2dd8512f86.png)
+![image](https://user-images.githubusercontent.com/38774593/214183575-28739cb5-e322-45ae-a7de-3c66c8135578.png)
+
 Clicking on this link will lead the user to a search page. The user can either search for titles or users. At the moment the search function is case sensitive
 and only accepts exact answers.
 
 __Image Page__
+
+![image](https://user-images.githubusercontent.com/38774593/214183712-d9e87266-5ffa-4644-8451-91a1e9f192c3.png)
 
 The image page is the page after clicking on another user's image. If the image was resized to fix the screen the resize button will return it back to its original
 size. 
 
 __Other User Pages__
 
+![image](https://user-images.githubusercontent.com/38774593/214183806-2fe468b6-0386-4869-b098-f1d7b8349428.png)
+
+
 The page the user sees when clicking on another user's name. Here you can see all the works they have created.
 
 __Your Page__
+
+![image](https://user-images.githubusercontent.com/38774593/214183889-31162026-f908-470c-b4e3-7645c2124c25.png)
+
 
 The user's page that can only be accessed once the user logs in. You can see your own works. When you click on your images on this page it will lead to
 the user-image-page where the user will be able to edit the title/description or be able to delete the picture.
