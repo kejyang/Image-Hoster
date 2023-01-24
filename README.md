@@ -1,3 +1,7 @@
+<h2>Link to Application</h2>
+
+https://art-progress-tracker.web.app/home
+
 <h2>Introduction</h2>
 
 Art progress tracker is a website that lets users host their drawings online. When the user opens up the website they are shown all the works that
