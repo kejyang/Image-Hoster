@@ -57,5 +57,8 @@ the user-image-page where the user will be able to edit the title/description or
 
 __User image page__
 
+![image](https://user-images.githubusercontent.com/38774593/214184522-51e450fe-dc4c-4303-99ab-d8dca4950737.png)
+
+
 Here you can view your own work and either edit the title/description or delete the image.
 
