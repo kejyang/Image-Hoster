@@ -11,10 +11,15 @@ Features
 
 __Home__ 
 
+![image](https://user-images.githubusercontent.com/38774593/214182146-5801c75a-1f59-4d7e-bacc-7c840d695619.png)
+
 This is the starting page. All the works uploaded by all users are shown here. Clicking on the image or title will lead to the image page of that image.
 Clicking on the username will lead to that user's page. This page can be accessed any time by clicking the home link on the navbar.
 
 __Login__
+
+![image](https://user-images.githubusercontent.com/38774593/214182666-72c2eb36-4a96-482f-95dd-88c294782ef4.png)
+![image](https://user-images.githubusercontent.com/38774593/214182774-21e0833e-af2c-488a-b1ee-2c3780ea88cd.png)
 
 Clicking on the login link will lead to a login page by Auth0. The user can either sign up or login. After logging in the user will be redirected back to the home
 page and the login link will turn into a logout link.
