@@ -40,5 +40,5 @@ the user-image-page where the user will be able to edit the title/description or
 
 __User image page__
 
-Here you can view your own work and either edit the title/description or deltet the image.
+Here you can view your own work and either edit the title/description or delete the image.
 
