@@ -14,24 +14,6 @@ imageRouter.get("/", async (_req, res) => {
    }
 });
 
-
-/*   imageRouter.get("/:url", async (req, res) => {
-    try {
-        const _url = req?.params?.url;
-        console.log(_url);
-        const user = await collections.images.findOne({url: _url});
-  
-        if (user) {
-            res.status(200).send(user);
-        } else {
-            res.status(404).send(`Failed to find a user: ID ${_url}`);
-        }
-  
-    } catch (error) {
-        res.status(404).send(`Failed to find an user: ID ${req?.params?.url}`);
-    }
- });  */
-
  imageRouter.get("/:id", async (req, res) => {
     try {
         const id = req?.params?.id;
@@ -89,23 +71,6 @@ imageRouter.get("/", async (_req, res) => {
     }
  }); 
 
-   /* imageRouter.delete("/:url", async (req, res) => {
-    try {
-        const _url = req?.params?.url;
-        const result = await collections.images.deleteOne({url: _url});
-  
-        if (result && result.deletedCount) {
-            res.status(202).send(`Removed an employee: ID ${_url}`);
-        } else if (!result) {
-            res.status(400).send(`Failed to remove an employee: ID ${_url}`);
-        } else if (!result.deletedCount) {
-            res.status(404).send(`Failed to find an employee: ID ${_url}`);
-        }
-    } catch (error) {
-        console.error(error.message);
-        res.status(400).send(error.message);
-    }
- });   */
   imageRouter.delete("/:id", async (req, res) => {
     try {
         const id = req?.params?.id;

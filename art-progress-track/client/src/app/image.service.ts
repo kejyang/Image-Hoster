@@ -8,8 +8,8 @@ import { Url } from 'url';
  providedIn: 'root'
 })
 export class ImageService {
- /* private url = 'http://localhost:5200'; */
- private url = 'https://art-hoster.onrender.com'; 
+  //private url = 'http://localhost:5200'; 
+ private url = 'https://art-hoster.onrender.com';  
  private images$: Subject<Image[]> = new Subject();
  
  constructor(private httpClient: HttpClient) { }
@@ -25,22 +25,8 @@ export class ImageService {
    this.refreshImages();
    return this.images$;
  }
- 
- /*getUser(id: string): Observable<User> {
-   return this.httpClient.get<User>(`${this.url}/users/${id}`);
- }*/
-
-/* getImage(image: string): Observable<Image> {
-  return this.httpClient.get<Image>(`${this.url}/images/${image}`);
-}  */
-
-/* getImage(image: string): Observable<Image> {
-  console.log('this is the image service image', image)
-  return this.httpClient.get<Image>(`${this.url}/images/${image}`);
-}  */
 
 getImage(id: string): Observable<Image> {
-  console.log('this is the image service image get by id', id)
   return this.httpClient.get<Image>(`${this.url}/images/${id}`);
 } 
 

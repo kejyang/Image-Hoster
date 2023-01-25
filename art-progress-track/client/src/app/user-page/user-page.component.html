@@ -12,10 +12,8 @@
 </div>
 <div class="horizontal">
   <tr *ngFor="let image of currUser.images">
-    <!-- <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description]"> -->
     <img src={{image.url}} class = "resized" [routerLink]="['/user-image-edit', image._id]">
     <div id = "title" [routerLink]="['/image-page', image.url, image.description, image.title,image.email]">{{image.title}}</div>
-    <!-- <button class="btn btn-danger" (click)="deleteImage(image)">Delete</button> -->
   </tr>
 </div>
-<!-- <button class="btn btn-danger" [routerLink]="['/home/upload-image-page']">Upload Image</button> -->
+

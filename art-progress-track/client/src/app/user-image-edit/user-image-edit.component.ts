@@ -48,8 +48,7 @@ import { ImageService } from '../image.service';
   `,
   styles: [`
   .box1 {
-    max-width: 600px;
-    max-height: 600px;
+    max-height: 80vh;
   }
 
   .box2 {
@@ -111,7 +110,6 @@ export class UserImageEditComponent {
     if (!this.id) {
       alert('No url provided');
     }
-    console.log(this.id);
 
     this.imageService.getImage(this.id).subscribe((image) => {
       this.tempImg = image;
@@ -128,38 +126,31 @@ export class UserImageEditComponent {
     this.auth.user$.subscribe(result=> {
       this.userService.getUser(result?.name!).subscribe((user) => {
         this.currUser = user;
-        console.log(this.currUser);
       });
     }); 
-    /* console.log(this.currUser); */
   }
 
   deleteImage(img:Image): void{
-    //console.log(url);
-    this.currUser.images?.splice(this.currUser.images?.indexOf(img), 1);
+    this.currUser.images = this.currUser.images?.filter(image => image.title != img.title);
     this.auth.user$.subscribe(result=> {
       this.userService.updateUser(result?.name!, this.currUser).subscribe({
-        next: () => {
-          //this.router.navigate(['/home/user-page']);
-        },
+        next: () => {},
         error: (error) => {
           alert('Failed to update employee');
           console.error(error);
         }
       });
     });  
-    console.log('this is the image id', img._id);
     this.imageService.deleteImage(img._id!).subscribe({
       next: () => {
         this.router.navigate(['/home/user-page']);
       }
-    });
+    }); 
   }
 
   originalSize(): void {
     var element = document.getElementById("image");
     element!.classList.toggle("box2");
-    console.log(element)
   } 
 
   reveal(): void{

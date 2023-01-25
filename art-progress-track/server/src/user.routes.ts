@@ -14,23 +14,6 @@ userRouter.get("/", async (_req, res) => {
    }
 });
 
-/*userRouter.get("/:id", async (req, res) => {
-    try {
-        const id = req?.params?.id;
-        const query = { _id: new mongodb.ObjectId(id) };
-        const user = await collections.users.findOne(query);
-  
-        if (user) {
-            res.status(200).send(user);
-        } else {
-            res.status(404).send(`Failed to find a user: ID ${id}`);
-        }
-  
-    } catch (error) {
-        res.status(404).send(`Failed to find an user: ID ${req?.params?.id}`);
-    }
- });*/
-
  userRouter.get("/:email", async (req, res) => {
     try {
         const _email = req?.params?.email;
@@ -63,25 +46,6 @@ userRouter.get("/", async (_req, res) => {
     }
  });
 
-/*  userRouter.put("/:id", async (req, res) => {
-    try {
-        const id = req?.params?.id;
-        const user = req.body;
-        const query = { _id: new mongodb.ObjectId(id) };
-        const result = await collections.users.updateOne(query, { $set: user });
-  
-        if (result && result.matchedCount) {
-            res.status(200).send(`Updated an user: ID ${id}.`);
-        } else if (!result.matchedCount) {
-            res.status(404).send(`Failed to find an user: ID ${id}`);
-        } else {
-            res.status(304).send(`Failed to update an user: ID ${id}`);
-        }
-    } catch (error) {
-        console.error(error.message);
-        res.status(400).send(error.message);
-    }
- }); */
 
  userRouter.put("/:email", async (req, res) => {
     try {

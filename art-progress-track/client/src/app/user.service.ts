@@ -7,8 +7,8 @@ import { User } from './user';
  providedIn: 'root'
 })
 export class UserService {
- /* private url = 'http://localhost:5200'; */
- private url = 'https://art-hoster.onrender.com'; 
+ //private url = 'http://localhost:5200'; 
+ private url = 'https://art-hoster.onrender.com';  
  private users$: Subject<User[]> = new Subject();
  
  constructor(private httpClient: HttpClient) { }

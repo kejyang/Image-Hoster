@@ -27,19 +27,12 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class UserAddTestComponent {
 
-  //name = new FormControl('');
-
   emptyImgArray: string[] = []
 
   testForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     images: new FormControl(this.emptyImgArray),
   });
-
-  
-  /*testForm = this.formBuilder.group({
-    name: '',
-  });*/
 
   constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder,) {
 
@@ -55,7 +48,6 @@ export class UserAddTestComponent {
   }
 
   onSubmit(): void {
-    //console.warn('Your order has been submitted', this.testForm.value);
     this.tempUser.email = this.testForm.value.name;
     this.tempUser.images = this.testForm.value.images;
     console.warn('This is the name', this.tempUser.email);

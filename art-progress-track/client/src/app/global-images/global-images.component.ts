@@ -45,7 +45,8 @@ import { ImageService } from '../image.service';
   .horizontal {
     display: flex;
     flex-wrap:wrap;
-    margin:20px;
+    margin-left: 3%;
+    margin-right: 3%
   }
 
   .center {

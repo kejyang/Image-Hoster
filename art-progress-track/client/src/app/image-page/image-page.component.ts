@@ -27,8 +27,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   `,
   styles: [`
     .box1 {
-      max-width: 50%;
-      max-height: 50%;
+      
+      max-height: 80vh;
     }
 
     .box2 {
@@ -81,7 +81,6 @@ export class ImagePageComponent {
     if (!this.url) {
       alert('No url provided');
     }
-    console.log(this.url);
   }
 
   constructor(
@@ -92,7 +91,6 @@ export class ImagePageComponent {
   originalSize() {
     var element = document.getElementById("image");
     element!.classList.toggle("box2");
-    console.log(element)
   } 
 
 }

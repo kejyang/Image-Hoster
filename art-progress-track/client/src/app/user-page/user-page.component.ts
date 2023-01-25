@@ -64,7 +64,6 @@ import { ImageService } from '../image.service';
   ]
 })
 export class UserPageComponent implements OnInit{
-  /* @Input() currUser!: String; */
 
    currUser : User = {
     email: '',
@@ -78,22 +77,16 @@ export class UserPageComponent implements OnInit{
   ngOnInit(): void {
     this.getCurrentUser();
   } 
-  /* ngOnChanges(): void{
-    this.getCurrentUser();
-  } */
 
   private getCurrentUser(): void{
     this.auth.user$.subscribe(result=> {
       this.userService.getUser(result?.name!).subscribe((user) => {
         this.currUser = user;
-        console.log(this.currUser);
       });
     }); 
-    /* console.log(this.currUser); */
   }
 
   deleteImage(img:Image): void{
-    //console.log(url);
     this.currUser.images?.splice(this.currUser.images?.indexOf(img), 1);
     this.auth.user$.subscribe(result=> {
       this.userService.updateUser(result?.name!, this.currUser).subscribe({
@@ -106,7 +99,6 @@ export class UserPageComponent implements OnInit{
         }
       });
     });  
-    console.log('this is the image id', img._id);
     this.imageService.deleteImage(img._id!).subscribe({
       next: () => {
         this.router.navigate(['/home/user-page']);

@@ -48,9 +48,8 @@ export class HomeComponent implements OnInit {
   private fetchUsers(): void {
     this.userService.getUsers().subscribe( result =>{
       this.users = result;
-      //this.addCurrentUser();
+      this.addCurrentUser();
     });
-    //console.log(this.Users$);
   }
 
   private getCurrentUser(): void{
@@ -65,16 +64,12 @@ export class HomeComponent implements OnInit {
     this.auth.user$.subscribe(result=> {
       if(this.auth.isAuthenticated$){
         this.tempUser.email = result?.name!;
-        console.log(this.tempUser.email);
         if(this.users.find(x => x.email == this.tempUser.email) === undefined){
-          debugger;
-          console.log(this.tempUser.email);
           this.userService.createUser(this.tempUser).subscribe({
             next: () => {
               this.router.navigate(['/']);
             },
             error: (error) => {
-              //alert("Failed to create user");
               console.error(error);
             }
           });
