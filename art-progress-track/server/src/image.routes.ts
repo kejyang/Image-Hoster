@@ -56,6 +56,7 @@ imageRouter.get("/", async (_req, res) => {
         const result = await collections.images.updateOne(query, { $set: {
             title: req.body.title,
             description: req.body.description,
+            comments: req.body.comments,
         } });
   
         if (result && result.matchedCount) {

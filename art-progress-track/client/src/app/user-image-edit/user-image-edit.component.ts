@@ -95,6 +95,7 @@ export class UserImageEditComponent {
     url: '',
     description: '',
     date: 0,
+    comments: [],
   }
 
   currUser : User = {

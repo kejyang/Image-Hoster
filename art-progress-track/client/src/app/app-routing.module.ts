@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UsersListComponent },
-  { path: 'image-page/:img/:description/:title/:email', component: ImagePageComponent },
+  { path: 'image-page/:id', component: ImagePageComponent },
   { path: 'home/user-page', component: UserPageComponent },
   { path: 'other-users-page/:email', component: OtherUsersPageComponent  },
   { path: 'home/all-images', component: GlobalImagesComponent },

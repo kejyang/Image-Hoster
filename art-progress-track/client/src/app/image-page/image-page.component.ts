@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Image } from '../image';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-image-page',
@@ -9,19 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
         <button (click)="originalSize()">Click resize image if applicable.</button>
       </div>
       <div class = center>
-        <img [src]= url id = "image" class = "box1 white">
+        <img [src]= tempImg.url id = "image" class = "box1 white">
       </div>
       <br>
 
       <div class = "center white descriptors bolded">
-        {{title}}
+        {{tempImg.title}}
       </div>
       <div class = "center white descriptors">
-        {{description}}
+        {{tempImg.description}}
       </div>
       <div class = "center white descriptors">
-        <a [routerLink]="['../../../../../other-users-page/', email]">{{email}}</a>
+        <a [routerLink]="['/other-users-page/', tempImg.email]">{{tempImg.email}}</a>
       </div>
+
+      <add-comment [id]="id"></add-comment>
 
   </body>
   `,
@@ -73,19 +77,35 @@ export class ImagePageComponent {
   description = '';
   email = '';
 
+  id = '';
+
+  tempImg : Image = {
+    title: '',
+    email: '',
+    url: '',
+    description: '',
+    date: 0,
+    comments: [],
+  }
+ 
   ngOnInit() {
-    this.url = this.route.snapshot.paramMap.get('img')!;
+    /* this.url = this.route.snapshot.paramMap.get('img')!;
     this.description = this.route.snapshot.paramMap.get('description')!
     this.title = this.route.snapshot.paramMap.get('title')!
     this.email = this.route.snapshot.paramMap.get('email')!
     if (!this.url) {
       alert('No url provided');
-    }
+    } */
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.imageService.getImage(this.id).subscribe((image) => {
+      this.tempImg = image;
+    }); 
   }
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private imageService: ImageService,
   ) { }
 
   originalSize() {

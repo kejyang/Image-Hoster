@@ -8,4 +8,5 @@ export interface Image {
     url: string;
     description?: string;
     date: number;
+    comments: string[];
 }

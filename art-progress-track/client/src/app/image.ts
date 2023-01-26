@@ -1,3 +1,5 @@
+import { Comment } from "./comment";
+
 export interface Image {
     _id?: string;
     title: string;
@@ -5,4 +7,5 @@ export interface Image {
     url?: string;
     description?: string;
     date?: number;
+    comments?: Comment[];
 }

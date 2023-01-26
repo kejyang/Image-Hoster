@@ -45,6 +45,7 @@ export class UploadImageComponent {
     url: '',
     description: '',
     date: 0,
+    comments: [],
   }
 
   fileLoaded = false;

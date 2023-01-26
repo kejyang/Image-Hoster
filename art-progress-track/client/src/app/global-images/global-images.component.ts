@@ -13,8 +13,8 @@ import { ImageService } from '../image.service';
 
   <div class="horizontal">
     <tr *ngFor="let image of imgArray$">
-      <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image.url, image.description, image.title, image.email]">
-      <div id = "title" [routerLink]="['/image-page', image.url, image.description, image.title,image.email]">{{image.title}}</div>
+      <img src={{image.url}} class = "resized" [routerLink]="['/image-page', image._id]">
+      <div id = "title" [routerLink]="['/image-page', image._id]">{{image.title}}</div>
       <div id = "artist" [routerLink]="['/other-users-page', image.email]">{{image.email}}</div>
     </tr>
   </div>

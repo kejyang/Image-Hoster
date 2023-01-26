@@ -77,6 +77,10 @@ async function applySchemaValidationImage(db: mongodb.Db) {
                     bsonType: "number",
                     description: "'date' is required and is a number",
                 },
+                comments: {
+                    bsonType: "array",
+                    description: "'comments' is required and is an array",
+                },
             },
         },
     };
@@ -89,3 +93,5 @@ async function applySchemaValidationImage(db: mongodb.Db) {
         }
     });
  }
+
+ 
