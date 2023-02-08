@@ -2,7 +2,7 @@
 
 https://art-progress-tracker.web.app/home
 
-Public account: Username:testemail@gmail.com Password:Testpassword1!
+Public account: Username: testemail@gmail.com Password: Testpassword1!
 
 <h2>Introduction</h2>
 
