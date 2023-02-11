@@ -46,6 +46,13 @@ __Image Page__
 The image page is the page after clicking on another user's image. If the image was resized to fix the screen the resize button will return it back to its original
 size. 
 
+
+__Comments Page__
+
+![image](https://user-images.githubusercontent.com/38774593/218234718-71b21ca7-70fc-4eb0-851c-aefe498d867a.png)
+
+It is possible to make comments on images.
+
 __Other User Pages__
 
 ![image](https://user-images.githubusercontent.com/38774593/214183806-2fe468b6-0386-4869-b098-f1d7b8349428.png)
