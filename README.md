@@ -71,7 +71,6 @@ the user-image-page where the user will be able to edit the title/description or
 __User image page__
 
 ![image](https://user-images.githubusercontent.com/38774593/214184522-51e450fe-dc4c-4303-99ab-d8dca4950737.png)
-![image](https://user-images.githubusercontent.com/38774593/214184669-ef168abe-2331-4aa0-98b5-5d73ba474ba6.png)
 
 
 
