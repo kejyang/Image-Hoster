@@ -4,6 +4,8 @@ https://art-progress-tracker.web.app/home
 
 Public account: Username: testemail@gmail.com Password: Testpassword1!
 
+Link to E2E test repo: https://github.com/kejyang/Art-progress-tracker-tests
+
 <h2>Introduction</h2>
 
 Art progress tracker is a website that lets users host their drawings online. When the user opens up the website they are shown all the works that
